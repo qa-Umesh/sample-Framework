@@ -19,6 +19,11 @@ public abstract class BrowserUtillity {
 	private WebDriver driver;
 	private WebDriverWait wait;
 
+	public BrowserUtillity(WebDriver driver) {
+		this.driver = driver;
+		wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+	}
+
 	public BrowserUtillity(Browser browser) {
 
 		if (browser == Browser.CHROME) {
@@ -37,6 +42,10 @@ public abstract class BrowserUtillity {
 
 	public void goToWebSite(String url) {
 		driver.get(url);
+	}
+
+	public WebDriver getDriver() {
+		return this.driver;
 	}
 
 	public void enterText(By locator, String enterText) {
