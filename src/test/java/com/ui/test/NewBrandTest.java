@@ -9,6 +9,7 @@ import com.ui.pages.HomePage;
 public class NewBrandTest extends BaseTest {
 
 	private HomePage homePage;
+	String imgFilePath = "/Users/umesh/Downloads/BrandImg.jpg";
 
 	@BeforeMethod
 	public void loginApplication() {
@@ -21,9 +22,10 @@ public class NewBrandTest extends BaseTest {
 
 		assertEquals(
 
-				homePage.navigateToAddBrand().getBrandNameLabel(),
+				homePage.navigateToAddBrand().enterBrandName("test01").uploadImg(imgFilePath).clickOnCreate()
+						.getBrandNameAddedMessage(),
 
-				"Brand Name*");
+				"Brand added successfully");
 
 	}
 
